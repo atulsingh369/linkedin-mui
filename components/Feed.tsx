@@ -2,11 +2,12 @@
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import InputBase from "@mui/material/InputBase";
 import PhotoIcon from "@mui/icons-material/Photo";
 import EventIcon from "@mui/icons-material/Event";
 import ArticleIcon from "@mui/icons-material/Article";
@@ -14,44 +15,98 @@ import PostCard from "./PostCard";
 import { posts } from "../utils/dummyData";
 
 export default function Feed() {
-  // Use imported real data
-
   return (
     <Box>
       {/* Start a post */}
-      <Card sx={{ mb: 2, p: 2 }}>
-        <Stack direction="row" spacing={2} sx={{ mb: 1 }}>
-          <Avatar src="https://i.pravatar.cc/150?img=12" />
+      <Card sx={{ mb: 2 }}>
+        <CardContent>
+          <Box display="flex" alignItems="center" gap={2}>
+            <Avatar src="https://i.pravatar.cc/150?img=12" />
+            <Box
+              sx={{
+                flex: 1,
+                px: 2,
+                py: 1,
+                borderRadius: 20,
+                bgcolor: "action.hover",
+              }}
+            >
+              <InputBase
+                placeholder="Start a post"
+                sx={{ flex: 1, width: "100%" }}
+              />
+            </Box>
+          </Box>
+
+          <Divider sx={{ my: 2 }} />
+
           <Box
             sx={{
-              flexGrow: 1,
-              border: 1,
-              borderColor: "grey.300",
-              borderRadius: 99,
-              px: 2,
-              py: 1.5,
               display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-              "&:hover": { bgcolor: "grey.100" },
+              justifyContent: "space-between",
+              width: "100%",
+              mt: 2,
             }}
           >
-            <Typography color="text.secondary" fontWeight={600} variant="body2">
-              Start a post
-            </Typography>
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 1,
+              }}
+            >
+              <PhotoIcon fontSize="small" sx={{ color: "primary.main" }} />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                fontWeight={600}
+                sx={{ whiteSpace: "nowrap" }}
+              >
+                Media
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 1,
+              }}
+            >
+              <EventIcon fontSize="small" sx={{ color: "warning.main" }} />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                fontWeight={600}
+                sx={{ whiteSpace: "nowrap" }}
+              >
+                Event
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 1,
+              }}
+            >
+              <ArticleIcon fontSize="small" sx={{ color: "error.main" }} />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                fontWeight={600}
+                sx={{ whiteSpace: "nowrap" }}
+              >
+                Write article
+              </Typography>
+            </Box>
           </Box>
-        </Stack>
-        <Stack direction="row" justifyContent="space-between" sx={{ mt: 1 }}>
-          <Button startIcon={<PhotoIcon sx={{ color: "primary.main" }} />}>
-            Media
-          </Button>
-          <Button startIcon={<EventIcon sx={{ color: "warning.main" }} />}>
-            Event
-          </Button>
-          <Button startIcon={<ArticleIcon sx={{ color: "error.main" }} />}>
-            Write article
-          </Button>
-        </Stack>
+        </CardContent>
       </Card>
 
       <Divider sx={{ mb: 2 }}>
